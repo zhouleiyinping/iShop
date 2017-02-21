@@ -9,12 +9,27 @@
 #ifndef iShop_pch
 #define iShop_pch
 
-
-
-
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#import "RTSwizzle.h"
+
+
+#import "AppDelegate.h"
+#import "AppRootManager.h"
+
+#import "AlertManager.h"
+#import "SheetManager.h"
+#import "BaseViewController.h"
+
+
+#pragma mark - 宏定义
+#import "APPMacro.h"
+
+#pragma mark - 网络处理
+#import "AFHTTPUtility.h"
+#import "AFHTTPClient.h"
+#import "UpLoadPicModel.h"
+
+#pragma mark - 安全相关
 #import "NSArray+safe.h"
 #import "NSDictionary+safe.h"
 #import "NSMutableArray+safe.h"
@@ -22,22 +37,33 @@
 #import "NSMutableString+safe.h"
 #import "NSNumber+safe.h"
 #import "NSString+safe.h"
+#import "RTSwizzle.h"
+
+#pragma mark - 第三方框架
+#import "StyledPageControl.h"
+#import "RDVTabBarController.h"
+#import "MJRefresh.h"
+#import "Reachability.h"
 #import "AFNetworking.h"
 #import "Masonry.h"
 #import "MBProgressHUD.h"
 #import "FMDB.h"
 #import "SDWebImageCompat.h"
 #import "UIViewController+MBProgressHUD.h"
-#import "UIDevice+Tool.h"
-#import "APPMacro.h"
-#import "AFHTTPClient.h"
-#import "UpLoadPicModel.h"
-#import "AFHTTPUtility.h"
+#import "MMPopupView.h"
+#import "MMPopupWindow.h"
+#import "MMSheetView.h"
+#import "MMAlertView.h"
+#import "IQKeyboardManager.h"
+
+#pragma mark - 分类
+#import "NSString+Extension.h"
+#import "UIColor+Extension.h"
+#import "UIDevice+Extension.h"
+#import "UIImage+Extension.h"
+#import "NSDictionary+Extension.h"
 #import "StringUtility.h"
-#import "StyledPageControl.h"
-#import "AppRootManager.h"
-#import "RDVTabBarController.h"
-#import "AppDelegate.h"
-#import "MJRefresh.h"
+#import "UIView+Frame.h"
+#import "UIView+Positioning.h"
 
 #endif /* iShop_pch */

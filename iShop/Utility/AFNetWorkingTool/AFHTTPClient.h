@@ -20,12 +20,13 @@ typedef enum : NSUInteger {
     HttpMethodDelete,
 } HttpMethod;
 
+
 @class AFHTTPClient;
 
 //请求成功
-typedef void (^HTTPRequestSuccessBlock)(AFHTTPClient *request, id responseObject);
+typedef void (^HTTPRequestSuccessBlock)(id responseObject);
 //请求失败
-typedef void (^HTTPRequestFailedBlock)(AFHTTPClient *request, NSError *error);
+typedef void (^HTTPRequestFailedBlock)(NSError *error);
 //数据请求的进度
 typedef void (^HTTPRequestProgressBlock)(NSProgress *requestProgress);
 //上传成功
@@ -36,8 +37,7 @@ typedef void (^HTTPUploadFailedBlock)(NSURLSessionDataTask *operation, NSError *
 typedef void (^DownLoadSuccess)(NSURLResponse *response, NSURL *filePath);
 //返回URL
 typedef NSURL *(^Destination)(NSURL *targetPath, NSURLResponse *response);
- // 失败Blcok
-typedef void (^Failure)(NSError *error);
+
 
 @interface AFHTTPClient : NSObject
 
@@ -50,9 +50,8 @@ typedef void (^Failure)(NSError *error);
  *  @param failedReqBlock   失败
  *  @param progressReqBlock 进度
  *
- *  @return 结果
  */
-+ (AFHTTPClient *)postRequestWithMethod:(NSString *)method
++ (void)postRequestWithMethod:(NSString *)method
                                  params:(NSDictionary *)params
                           progressBlock:(HTTPRequestProgressBlock)progressReqBlock
                            successBlock:(HTTPRequestSuccessBlock)successReqBlock
@@ -66,16 +65,15 @@ typedef void (^Failure)(NSError *error);
  *  @param failedReqBlock   失败
  *  @param progressReqBlock 进度
  *
- *  @return 结果
  */
-+ (AFHTTPClient *)getRequestWithMethod:(NSString *)method
++ (void)getRequestWithMethod:(NSString *)method
                                 params:(NSDictionary *)params
                          progressBlock:(HTTPRequestProgressBlock)progressReqBlock
                           successBlock:(HTTPRequestSuccessBlock)successReqBlock
                            failedBlock:(HTTPRequestFailedBlock)failedReqBlock;
 
 
-+ (AFHTTPClient *)requestWithMethod:(NSString *)method
++ (void)requestWithMethod:(NSString *)method
                              params:(NSDictionary *)params
                          httpMethod:(HttpMethod)httpMethod
                       progressBlock:(HTTPRequestProgressBlock)progressReqBlock
@@ -158,7 +156,7 @@ typedef void (^Failure)(NSError *error);
 + (NSURLSessionDownloadTask *)downLoadWithURL:(NSString *)URLString
                                   destination:(Destination)destination
                               downLoadSuccess:(DownLoadSuccess)downLoadSuccess
-                                  failedBlock:(Failure)failedReqBlock
+                                  failedBlock:(HTTPRequestFailedBlock)failedReqBlock
                                 progressBlock:(HTTPRequestProgressBlock)progressReqBlock;
 
 

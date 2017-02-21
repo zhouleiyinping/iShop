@@ -14,12 +14,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>IQKeyboardManager.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>MJRefresh.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MMPopupView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -35,6 +45,11 @@
 			<false/>
 		</dict>
 		<key>RDVTabBarController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Reachability.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -57,17 +72,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>0AE01D8C7B8E8D51F62DA12F6E90AD87</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>175B076ED45EB1A3E40F58BA14036467</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>251EA54064F8B9275F0F37CF2389AAEE</key>
+		<key>3BE41315D7388E24ECDC4CA8D150BB62</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>399B387127DE30500BF0D25C7574E833</key>
+		<key>8188EDC803BA5A36DA8494588379C905</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -77,7 +97,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>95A8C46ED6C6640A3F2ED794E12FE05F</key>
+		<key>9650B5ADCE86F1A055FAFC635284BDB5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -92,7 +112,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B61ED0B9154600B1B5EF2D7D4999C34A</key>
+		<key>C36942A70C956C5FAF794B31538EF9FD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F194808A9519534E68DCF797C895DFB1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F8B9484E10BF0F0EA9943BA606BA75E8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

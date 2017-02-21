@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "AppIntroViewController.h"
 #import "ViewController.h"
+#import "ZAppManager.h"
 
 @interface AppRootManager ()
 
@@ -50,10 +51,19 @@ static AppRootManager *shareManager = nil;
     }
 }
 
-- (void)gotoMainView
-{
-    ViewController *vc = [[ViewController alloc]init];
-    [self.window setRootViewController:vc];
+- (void)gotoMainView {
+    
+    
+    //  *配置URL缓存
+    [ZAManager setURLCache];
+    
+    //  *构建App架构
+    [ZAManager initializationInterface];
+    
+    //  *3DTouch配置
+    if (iOS(9)) {
+
+    }
 }
 
 

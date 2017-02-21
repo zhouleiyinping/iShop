@@ -14,35 +14,33 @@
 
 
 #pragma mark - 创建请求者
-+(AFHTTPSessionManager *)manager
-{
++(AFHTTPSessionManager *)manager {
+    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     // 超时时间
     manager.requestSerializer.timeoutInterval = kTimeoutInterval;
     
     // 声明上传的是json格式的参数，需要后台约定好，不然会出现后台无法获取到上传的参数问题
     manager.requestSerializer = [AFHTTPRequestSerializer serializer]; // 上传普通格式
-//        manager.requestSerializer = [AFJSONRequestSerializer serializer]; // 上传JSON格式
     
     // 声明获取到的数据格式
     manager.responseSerializer = [AFHTTPResponseSerializer serializer]; // AFN不会解析,数据是data，需要自己解析
-    //    manager.responseSerializer = [AFJSONResponseSerializer serializer]; // AFN会JSON解析返回的数据
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
 
     return manager;
 }
 
 #pragma mark - post请求
-+ (AFHTTPClient *)postRequestWithMethod:(NSString *)method
++ (void)postRequestWithMethod:(NSString *)method
                                  params:(NSDictionary *)params
                           progressBlock:(HTTPRequestProgressBlock)progressReqBlock
                            successBlock:(HTTPRequestSuccessBlock)successReqBlock
                             failedBlock:(HTTPRequestFailedBlock)failedReqBlock{
     
-    return [self requestWithMethod:method params:params httpMethod:HttpMethodPost  progressBlock:progressReqBlock successBlock:successReqBlock failedBlock:failedReqBlock];
+    [self requestWithMethod:method params:params httpMethod:HttpMethodPost  progressBlock:progressReqBlock successBlock:successReqBlock failedBlock:failedReqBlock];
 }
 #pragma mark - get请求
-+ (AFHTTPClient *)getRequestWithMethod:(NSString *)method
++ (void)getRequestWithMethod:(NSString *)method
                                 params:(NSDictionary *)params
                          progressBlock:(HTTPRequestProgressBlock)progressReqBlock
                           successBlock:(HTTPRequestSuccessBlock)successReqBlock
@@ -52,15 +50,22 @@
 }
 
 #pragma mark - 处理请求
-+ (AFHTTPClient *)requestWithMethod:(NSString *)method
++ (void)requestWithMethod:(NSString *)method
                              params:(NSDictionary *)params
                          httpMethod:(HttpMethod)httpMethod
                       progressBlock:(HTTPRequestProgressBlock)progressReqBlock
                        successBlock:(HTTPRequestSuccessBlock)successReqBlock
                         failedBlock:(HTTPRequestFailedBlock)failedReqBlock{
     
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] init];
+    
+    // 判断有无网络
+    if ([AFHTTPUtility connectedToNetwork] == NO) {
+        // ...<无网络>...<不进行网络请求>
+        return;
+    }
+    
     NSString *requestUrl = method;
+    requestUrl = [requestUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *requestParams = [AFHTTPUtility getRequestAllDict:params];
     AFHTTPSessionManager *manager = [self manager];
     
@@ -75,14 +80,23 @@
                     }
                 }
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                
+                
+#if LogDebugPrintJSONString
+                NSString *originJsonString = [(NSDictionary *) responseObject convertToJsonString];
+                NSLog(@"\n\n【 %@ 】请求返回内容:\n%@\n\n", method, originJsonString);
+#else
+                NSLog(@"【 %@ 】请求返回内容:\n%@", method, (NSDictionary *) responseObject);
+#endif
+                
                  // 请求成功
                 if (responseObject) {
                     if (successReqBlock) {
-                        successReqBlock(httpClient, responseObject);
+                        successReqBlock(responseObject);
                     }
                 }else {
                     if (successReqBlock) {
-                        successReqBlock(httpClient, @{@"msg":@"暂无数据"});
+                        successReqBlock(@{@"msg":@"暂无数据"});
                     }
                 }
                 
@@ -90,9 +104,11 @@
 
                 
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                
+                NSLog(@"Error: %@", [error description]);
                 // 请求失败
                 if (failedReqBlock) {
-                    failedReqBlock(httpClient, error);
+                    failedReqBlock(error);
                 }
                 [kApplication setNetworkActivityIndicatorVisible:NO]; // 关闭状态栏动画
             }];
@@ -106,14 +122,22 @@
                     }
                 }
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                
+#if LogDebugPrintJSONString
+                NSString *originJsonString = [(NSDictionary *) responseObject convertToJsonString];
+                NSLog(@"\n\n【 %@ 】请求返回内容:\n%@\n\n", method, originJsonString);
+#else
+                NSLog(@"【 %@ 】请求返回内容:\n%@", method, (NSDictionary *) responseObject);
+#endif
+                
                 // 请求成功
                 if (responseObject) {
                     if (successReqBlock) {
-                        successReqBlock(httpClient, responseObject);
+                        successReqBlock(responseObject);
                     }
                 }else {
                     if (successReqBlock) {
-                        successReqBlock(httpClient, @{@"msg":@"暂无数据"});
+                        successReqBlock(@{@"msg":@"暂无数据"});
                     }
                 }
                 
@@ -123,7 +147,7 @@
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 // 请求失败
                 if (failedReqBlock) {
-                    failedReqBlock(httpClient, error);
+                    failedReqBlock(error);
                 }
                 [kApplication setNetworkActivityIndicatorVisible:NO]; // 关闭状态栏动画
 
@@ -132,14 +156,22 @@
         }else if (httpMethod == HttpMethodDelete) {
             
             [manager DELETE:requestUrl parameters:requestParams success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                
+#if LogDebugPrintJSONString
+                NSString *originJsonString = [(NSDictionary *) responseObject convertToJsonString];
+                NSLog(@"\n\n【 %@ 】请求返回内容:\n%@\n\n", method, originJsonString);
+#else
+                NSLog(@"【 %@ 】请求返回内容:\n%@", method, (NSDictionary *) responseObject);
+#endif
+                
                 // 请求成功
                 if (responseObject) {
                     if (successReqBlock) {
-                        successReqBlock(httpClient, responseObject);
+                        successReqBlock(responseObject);
                     }
                 }else {
                     if (successReqBlock) {
-                        successReqBlock(httpClient, @{@"msg":@"暂无数据"});
+                        successReqBlock(@{@"msg":@"暂无数据"});
                     }
                 }
                 [kApplication setNetworkActivityIndicatorVisible:NO]; // 关闭状态栏动画
@@ -148,7 +180,7 @@
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 // 请求失败
                 if (failedReqBlock) {
-                    failedReqBlock(httpClient, error);
+                    failedReqBlock(error);
                 }
                 [kApplication setNetworkActivityIndicatorVisible:NO]; // 关闭状态栏动画
 
@@ -156,7 +188,6 @@
             
         }
     
-    return httpClient;
 }
 
 #pragma mark - 单张图片上传
@@ -167,6 +198,12 @@
         progressBlock:(HTTPRequestProgressBlock)progressReqBlock
          successBlock:(HTTPUploadSuccessBlock)successReqBlock
           failedBlock:(HTTPUploadFailedBlock)failedReqBlock {
+    
+    // 判断有无网络
+    if ([AFHTTPUtility connectedToNetwork] == NO) {
+        // ...<无网络>...<不进行网络请求>
+        return;
+    }
     
     NSString *requestUrl = URLString;
     NSDictionary *requestParams = [AFHTTPUtility getRequestAllDict:parameters];
@@ -206,6 +243,12 @@
         progressBlock:(HTTPRequestProgressBlock)progressReqBlock
          successBlock:(HTTPUploadSuccessBlock)successReqBlock
           failedBlock:(HTTPUploadFailedBlock)failedReqBlock {
+    
+    // 判断有无网络
+    if ([AFHTTPUtility connectedToNetwork] == NO) {
+        // ...<无网络>...<不进行网络请求>
+        return;
+    }
     
     NSString *requestUrl = URLString;
     NSDictionary *requestParams = [AFHTTPUtility getRequestAllDict:parameters];
@@ -259,6 +302,12 @@
          successBlock:(HTTPUploadSuccessBlock)successReqBlock
           failedBlock:(HTTPUploadFailedBlock)failedReqBlock {
     
+    // 判断有无网络
+    if ([AFHTTPUtility connectedToNetwork] == NO) {
+        // ...<无网络>...<不进行网络请求>
+        return;
+    }
+    
     NSString *requestUrl = URLString;
     NSDictionary *requestParams = [AFHTTPUtility getRequestAllDict:parameters];
     AFHTTPSessionManager *manager = [self manager];
@@ -291,8 +340,14 @@
 + (NSURLSessionDownloadTask *)downLoadWithURL:(NSString *)URLString
                                   destination:(Destination)destination
                               downLoadSuccess:(DownLoadSuccess)downLoadSuccess
-                                  failedBlock:(Failure)failedReqBlock
+                                  failedBlock:(HTTPRequestFailedBlock)failedReqBlock
                                 progressBlock:(HTTPRequestProgressBlock)progressReqBlock {
+    
+    // 判断有无网络
+    if ([AFHTTPUtility connectedToNetwork] == NO) {
+        // ...<无网络>...<不进行网络请求>
+        return nil;
+    }
     
     NSString *requestUrl = URLString;
     AFHTTPSessionManager *manager = [self manager];

@@ -38,7 +38,17 @@ IntroViewDelegate>
 #pragma mark - IntroViewDelegate
 - (void)introOver {
     
-    [[AppRootManager shareManager] gotoMainView];
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        self.view.alpha = 0.1;
+    } completion:^(BOOL finished) {
+        [self.view removeFromSuperview];
+        self.view = nil;
+        
+        [[AppRootManager shareManager] gotoMainView];
+
+    }];
+    
 
 }
 

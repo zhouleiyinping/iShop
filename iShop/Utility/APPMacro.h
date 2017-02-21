@@ -11,6 +11,14 @@
 @interface APPMacro : NSObject
 
 
+/* Debug控制台打印对象或原始JSON字符串 0-Object 1-JSON*/
+#define LogDebugPrintJSONString 1
+
+
+// iOS版本判断宏
+#define iOS(version) (([[[UIDevice currentDevice] systemVersion] intValue] >= version) ? 1 : 0)
+
+
 /**app版本*/
 #define APPCurrentVersion [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
 
@@ -65,6 +73,7 @@
 inline __attribute__((always_inline)) NSString *m_safeString(NSString *str) { return str ? str : @""; }
 
 
+#define YWDefaultLightTextBlueColor [UIColor colorWithRed:0.09 green:0.60 blue:0.94 alpha:1.00]
 
 
 //判断是否为iPhone
@@ -79,8 +88,6 @@ inline __attribute__((always_inline)) NSString *m_safeString(NSString *str) { re
 #define iPhone6_6s [[UIScreen mainScreen] bounds].size.width == 375.0f && [[UIScreen mainScreen] bounds].size.height == 667.0f
 // 判断是否为iPhone 6Plus/6sPlus
 #define iPhone6Plus_6sPlus [[UIScreen mainScreen] bounds].size.width == 414.0f && [[UIScreen mainScreen] bounds].size.height == 736.0f
-//判断 iOS 8 或更高的系统版本
-#define IOS_VERSION_8_OR_LATER (([[[UIDevice currentDevice] systemVersion] floatValue] >=8.0)? (YES):(NO))
 
 //数组是否为空
 #define kArrayIsEmpty(array) (array == nil || [array isKindOfClass:[NSNull class]] || array.count == 0)
@@ -102,5 +109,23 @@ inline __attribute__((always_inline)) NSString *m_safeString(NSString *str) { re
 #define RGBAColor(r,g,b,a)       [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
 //设置随机颜色
 #define kRandomColor [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1.0]
+
+
+// 获取文本高度
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_7_0
+#define textSizeWithFont(text, font) [text length] > 0 ? [text \
+sizeWithAttributes:@{NSFontAttributeName:font}] : CGSizeZero;
+#else
+#define textSizeWithFont(text, font) [text length] > 0 ? [text sizeWithFont:font] : CGSizeZero;
+#endif
+// 多行文本获取高度
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_7_0
+#define multilineTextSize(text, font, maxSize) [text length] > 0 ? [text \
+boundingRectWithSize:maxSize options:(NSStringDrawingUsesLineFragmentOrigin) \
+attributes:@{NSFontAttributeName:font} context:nil].size : CGSizeZero;
+#else
+#define multilineTextSize(text, font, maxSize) [text length] > 0 ? [text \
+sizeWithFont:font constrainedToSize:maxSize] : CGSizeZero;
+#endif
 
 @end
