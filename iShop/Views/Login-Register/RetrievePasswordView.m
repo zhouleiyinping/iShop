@@ -29,10 +29,11 @@
         [self.bgView addSubview:self.codeTxtfield];
         [self addSubview:self.loginBtn];
         [self addSubview:self.hintLab];
+        [self addSubview:self.hintLab2];
         [self.bgView addSubview:self.phoneLab];
         [self.bgView addSubview:self.codeLab];
         [self.bgView addSubview:self.getCodeBtn];
-
+        [self addSubview:self.OnlineServiceBtn];
         [self setupConstraints];
         
     }
@@ -92,8 +93,19 @@
 
     [self.hintLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(self.mas_leading).offset(20);
-        make.trailing.mas_equalTo(self.mas_trailing).offset(-20);
+//        make.trailing.mas_equalTo(self.mas_trailing).offset(-20);
         make.top.equalTo(self.loginBtn.mas_bottom).offset(30);
+    }];
+    
+    [self.hintLab2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.mas_equalTo(self.mas_leading).offset(20);
+        make.trailing.mas_equalTo(self.mas_trailing).offset(-20);
+        make.top.equalTo(self.hintLab.mas_bottom).offset(10);
+    }];
+    
+    [self.OnlineServiceBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.hintLab.mas_centerY).offset(0);
+        make.left.equalTo(self.hintLab.mas_right).offset(0);
     }];
     
     [self.getCodeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -101,9 +113,35 @@
         make.right.equalTo(self.bgView).offset(-10);
         make.width.offset(100);
     }];
+    
+    
+    self.hintLab2.hidden = YES;
 }
 
+-(void)loadDataWithType:(ForViewControllerTypes)vcType {
+    
+    switch (vcType) {
+        case PhoneBindingVC: {
+            
+            self.hintLab2.hidden = NO;
+            self.phoneTxtfield.placeholder = @"请输入您的11位手机号码";
+            [_loginBtn setTitle:@"立即提交" forState:UIControlStateNormal];
+            
+            NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:@"*绑定手机后可以免费接收中奖短信通知，以及最新的活动信息"];
+            [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:NSMakeRange(0, attrString.length)];
+            [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithString:@"#eb203b"] range:NSMakeRange(0, 1)];
+            [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithString:@"#666666"] range:NSMakeRange(1, attrString.length - 1)];
+            _hintLab.attributedText = attrString;
 
+            self.OnlineServiceBtn.hidden = YES;
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
 
 -(UIView *)bgView {
     if (!_bgView) {
@@ -123,7 +161,7 @@
         _phoneTxtfield.font = [UIFont systemFontOfSize:15];
         _phoneTxtfield.returnKeyType = UIReturnKeyNext;
         _phoneTxtfield.clearButtonMode = UITextFieldViewModeWhileEditing;
-        _phoneTxtfield.keyboardType = UIKeyboardTypeDefault;
+        _phoneTxtfield.keyboardType = UIKeyboardTypeNumberPad;
         _phoneTxtfield.placeholder = @"请输入绑定的手机号码";
         _phoneTxtfield.borderStyle = UITextBorderStyleNone;
         _phoneTxtfield.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -134,7 +172,25 @@
     return _phoneTxtfield;
 }
 -(void)phoneNumberEditingChanged:(UITextField *)textField {
-    NSLog(@"手机号");
+    
+    if (textField.text.length > 0) {
+        if (self.codeTxtfield.text.length > 0) {
+            self.loginBtn.enabled = YES;
+            self.loginBtn.backgroundColor = [UIColor colorWithString:@"#eb203b"];
+            [self.loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            
+        } else {
+            self.loginBtn.enabled = NO;
+            self.loginBtn.backgroundColor = [UIColor colorWithString:@"#eeeeee"];
+            [self.loginBtn setTitleColor:[UIColor colorWithString:@"#cccccc"] forState:UIControlStateNormal];
+        }
+    }
+    else {
+        self.loginBtn.enabled = NO;
+        self.loginBtn.backgroundColor = [UIColor colorWithString:@"#eeeeee"];
+        [self.loginBtn setTitleColor:[UIColor colorWithString:@"#cccccc"] forState:UIControlStateNormal];
+    }
+
 }
 #pragma mark - 验证码
 -(UITextField *)codeTxtfield {
@@ -157,7 +213,45 @@
     return _codeTxtfield;
 }
 -(void)codeTxtfieldChanged:(UITextField *)textField {
-    NSLog(@"验证码");
+    
+    if (textField.text.length > 0) {
+        if (self.phoneTxtfield.text.length > 0) {
+            self.loginBtn.enabled = YES;
+            self.loginBtn.backgroundColor = [UIColor colorWithString:@"#eb203b"];
+            [self.loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            
+        } else {
+            self.loginBtn.enabled = NO;
+            self.loginBtn.backgroundColor = [UIColor colorWithString:@"#eeeeee"];
+            [self.loginBtn setTitleColor:[UIColor colorWithString:@"#cccccc"] forState:UIControlStateNormal];
+        }
+    }
+    else {
+        self.loginBtn.enabled = NO;
+        self.loginBtn.backgroundColor = [UIColor colorWithString:@"#eeeeee"];
+        [self.loginBtn setTitleColor:[UIColor colorWithString:@"#cccccc"] forState:UIControlStateNormal];
+    }
+}
+
+
+- (UIButton *)OnlineServiceBtn {
+    
+    if (!_OnlineServiceBtn) {
+        _OnlineServiceBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _OnlineServiceBtn.backgroundColor = [UIColor clearColor];
+        _OnlineServiceBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+        [_OnlineServiceBtn setTitle:@"在线客服" forState:UIControlStateNormal];
+        [_OnlineServiceBtn setTitleColor:RGBColor(0, 110, 252) forState:UIControlStateNormal];
+        [_OnlineServiceBtn setTitleColor:RGBColor(0, 110, 252) forState:UIControlStateHighlighted];
+        [_OnlineServiceBtn addTarget:self action:@selector(onlineServiceAction) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _OnlineServiceBtn;
+}
+-(void)onlineServiceAction {
+
+    if (self.serviceBlock) {
+        self.serviceBlock();
+    }
 }
 - (UIButton *)loginBtn {
     
@@ -181,7 +275,10 @@
     return _loginBtn;
 }
 -(void)loginAction {
-    NSLog(@"登录");
+    
+    if (self.submitBlock) {
+        self.submitBlock();
+    }
 }
 
 
@@ -205,6 +302,18 @@
 }
 -(void)getCodeAction:(UIButton *)button {
     
+    // 隐藏键盘
+    [self endEditing:YES];
+    
+    NSString *phoneStr = [self.phoneTxtfield.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if ([NSString checkTel:phoneStr] == NO) {
+        
+        [kAppDelegate.navVC hideHUDWithOnlyMessage:@"请输入正确的手机号"];
+        return;
+    }
+    [kAppDelegate.navVC hideHUDWithOnlyMessage:@"验证码已发送，请注意查收"];
+
     __block int timeout=60; //倒计时时间
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
@@ -241,8 +350,8 @@
     
 }
 
-- (UILabel *)hintLab
-{
+- (UILabel *)hintLab {
+    
     if (!_hintLab) {
         NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:@"*如还未绑定手机号，请联系"];
         [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:NSMakeRange(0, attrString.length)];
@@ -259,6 +368,25 @@
     }
     return _hintLab;
 }
+- (UILabel *)hintLab2 {
+    
+    if (!_hintLab2) {
+        NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:@"*忘记密码时，可以通过手机找回"];
+        [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:NSMakeRange(0, attrString.length)];
+        [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithString:@"#eb203b"] range:NSMakeRange(0, 1)];
+        [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithString:@"#666666"] range:NSMakeRange(1, attrString.length - 1)];
+        
+        _hintLab2 = [UILabel new];
+        _hintLab2.backgroundColor = [UIColor clearColor];
+        _hintLab2.textAlignment = NSTextAlignmentLeft;
+        _hintLab2.font = [UIFont systemFontOfSize:14];
+        _hintLab2.attributedText = attrString;
+        _hintLab2.numberOfLines = 0;
+        _hintLab2.userInteractionEnabled = YES;
+    }
+    return _hintLab2;
+}
+
 -(UILabel *)phoneLab {
     
     if (!_phoneLab) {

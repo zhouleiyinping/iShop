@@ -12,23 +12,23 @@ typedef enum : NSUInteger {
     /**
      *  身份绑定
      */
-    IdentityBinding,
+    IdentityBindingType,
     /**
      *  手机绑定
      */
-    PhoneBinding,
+    PhoneBindingType,
     /**
      *  登录密码
      */
-    Loginpassword,
+    LoginpasswordType,
     /**
      *  银行卡
      */
-    BankCard,
+    BankCardType,
     /**
      *  提款密码
      */
-    DrawMoneyPassword
+    DrawMoneyPasswordType
 } SafeCenterTypes;
 
 @interface SecurityCenterModel : NSObject

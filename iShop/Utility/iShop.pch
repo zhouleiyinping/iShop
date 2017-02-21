@@ -19,7 +19,7 @@
 #import "AlertManager.h"
 #import "SheetManager.h"
 #import "BaseViewController.h"
-
+#import "PubilcPart.h"
 
 #pragma mark - 宏定义
 #import "APPMacro.h"

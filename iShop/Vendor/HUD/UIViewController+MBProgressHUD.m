@@ -178,23 +178,24 @@ const char *finishedHandlerKey = "finishedHandlerKey";
  */
 - (void)hideHUDWithOnlyMessage:(NSString *)message
 {
-    UILabel *tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 50)];
+    UILabel *tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 150, 45)];
     [tipLabel setNumberOfLines:2];
+    tipLabel.center = kAppDelegate.window.center;
     [tipLabel setTextColor:[UIColor whiteColor]];
     [tipLabel setFont:[UIFont systemFontOfSize:13]];
     [tipLabel setTextAlignment:NSTextAlignmentCenter];
     tipLabel.backgroundColor = [UIColor clearColor];
-    
     [tipLabel setText:message];
     self.progressHUD.customView = tipLabel;
     self.progressHUD.mode = MBProgressHUDModeCustomView;
  
     self.progressHUD.margin = 5.f;
-    self.progressHUD.color = [UIColor colorWithWhite:0 alpha:0.8];
+    self.progressHUD.color = RGBColor(122, 122, 122);
     self.progressHUD.removeFromSuperViewOnHide = YES;
-    self.progressHUD.minSize = CGSizeMake(200, 200);
+    self.progressHUD.minSize = CGSizeMake(150, 45);
+    
     [self.progressHUD show:YES];
-    [self performSelector:@selector(hideHUD) withObject:nil afterDelay:1.5];
+    [self performSelector:@selector(hideHUD) withObject:nil afterDelay:2];
 }
 
 - (void)hideHUDWithCompletionFailMessage:(NSString *)message

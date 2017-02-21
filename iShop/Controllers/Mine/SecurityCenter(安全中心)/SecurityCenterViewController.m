@@ -9,6 +9,7 @@
 #import "SecurityCenterViewController.h"
 #import "SecurityCenterTabCell.h"
 #import "SecurityCenterModel.h"
+#import "PromptlyChangeViewController.h"
 
 @interface SecurityCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *safeTableView;
@@ -20,6 +21,7 @@
 @implementation SecurityCenterViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     self.titleLabel.text = @"安全中心";
     self.view.backgroundColor = [UIColor colorWithHex:@"f5f5f5"];
@@ -86,8 +88,62 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
     
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    switch (indexPath.section) {
+        case 0: {
+            switch (indexPath.row) {
+                case 0:
+                {
+                    
+                }
+                    break;
+                case 1: //手机绑定
+                {
+                    /**
+                     这里应判断一下当前是否已绑定过手机号，如果已绑定，则进入PromptlyChangeViewController，如果未绑定，则进手机绑定页面
+                     */
+                    PromptlyChangeViewController *VC = [[PromptlyChangeViewController alloc]init];
+                    VC.safeVCType = PhoneBinding;
+                    [self.navigationController pushViewController:VC animated:YES];
+                }
+                    break;
+                case 2: //登录密码
+                {
+                    PromptlyChangeViewController *VC = [[PromptlyChangeViewController alloc]init];
+                    VC.safeVCType = Loginpassword;
+                    [self.navigationController pushViewController:VC animated:YES];
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
+            break;
+            
+        default: {
+            
+            switch (indexPath.row) {
+                case 0:
+                {
+                    
+                }
+                    break;
+                case 1:
+                {
+                    PromptlyChangeViewController *VC = [[PromptlyChangeViewController alloc]init];
+                    VC.safeVCType = DrawMoneyPassword;
+                    [self.navigationController pushViewController:VC animated:YES];
+                }
+                    
+                default:
+                    break;
+            }
+        }
+            break;
+    }
+    
 
     
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 @end

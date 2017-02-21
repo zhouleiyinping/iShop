@@ -44,8 +44,8 @@
 
 -(void)clickLoginButton:(UIButton *)button {
     
-//    SecurityCenterViewController * VC = [[SecurityCenterViewController alloc]init];
-    LoginViewController *VC = [[LoginViewController alloc]init];
+    SecurityCenterViewController * VC = [[SecurityCenterViewController alloc]init];
+//    LoginViewController *VC = [[LoginViewController alloc]init];
     [self.navigationController pushViewController:VC animated:YES];
     
     

@@ -39,7 +39,14 @@
     
     if (!_retrievePasswordView) {
         _retrievePasswordView = [[RetrievePasswordView alloc]init];
-       
+        [_retrievePasswordView setSubmitBlock:^{
+            NSLog(@"---点击了登录--");
+        }];
+        
+        [_retrievePasswordView setServiceBlock:^{
+            NSLog(@"---点击了在线客服--");
+
+        }];
     }
     return _retrievePasswordView;
 }
