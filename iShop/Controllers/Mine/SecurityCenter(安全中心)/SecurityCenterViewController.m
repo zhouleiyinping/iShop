@@ -10,6 +10,10 @@
 #import "SecurityCenterTabCell.h"
 #import "SecurityCenterModel.h"
 #import "PromptlyChangeViewController.h"
+#import "IdentityBindingViewController.h"
+#import "PhoneBindingViewController.h"
+#import "SetUpDrawMoneyPwViewController.h"
+#import "BankCodeViewController.h"
 
 @interface SecurityCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *safeTableView;
@@ -93,6 +97,12 @@
             switch (indexPath.row) {
                 case 0:
                 {
+                    /**
+                     这里要判断一下身份是否绑定，改变 VC.bindingType的值
+                     */
+                    IdentityBindingViewController *VC = [[IdentityBindingViewController alloc]init];
+                    VC.bindingType = Unbounded;
+                    [self.navigationController pushViewController:VC animated:YES];
                     
                 }
                     break;
@@ -101,8 +111,10 @@
                     /**
                      这里应判断一下当前是否已绑定过手机号，如果已绑定，则进入PromptlyChangeViewController，如果未绑定，则进手机绑定页面
                      */
-                    PromptlyChangeViewController *VC = [[PromptlyChangeViewController alloc]init];
-                    VC.safeVCType = PhoneBinding;
+//                    PromptlyChangeViewController *VC = [[PromptlyChangeViewController alloc]init];//已绑定
+//                    VC.safeVCType = PhoneBinding;
+                    
+                    PhoneBindingViewController *VC = [[PhoneBindingViewController alloc]init];//未绑定
                     [self.navigationController pushViewController:VC animated:YES];
                 }
                     break;
@@ -125,13 +137,20 @@
             switch (indexPath.row) {
                 case 0:
                 {
+                    BankCodeViewController *VC = [[BankCodeViewController alloc]init];
                     
+                    [self.navigationController pushViewController:VC animated:YES];
                 }
                     break;
                 case 1:
                 {
-                    PromptlyChangeViewController *VC = [[PromptlyChangeViewController alloc]init];
-                    VC.safeVCType = DrawMoneyPassword;
+                    /**
+                     这里应判断一下当前是否已设置过提现密码，如果已设置，则进入PromptlyChangeViewController，如果未设置，则进入提现密码设置页面
+                     */
+//                    PromptlyChangeViewController *VC = [[PromptlyChangeViewController alloc]init];
+//                    VC.safeVCType = DrawMoneyPassword;
+                    
+                    SetUpDrawMoneyPwViewController *VC = [[SetUpDrawMoneyPwViewController alloc]init];
                     [self.navigationController pushViewController:VC animated:YES];
                 }
                     

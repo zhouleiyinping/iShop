@@ -176,17 +176,11 @@
 -(UITextField *)oldPasswordTxtfield {
     
     if (!_oldPasswordTxtfield) {
-        _oldPasswordTxtfield = [UITextField new];
+        _oldPasswordTxtfield = [UITextField setUpTextFieldForPubilc];
         _oldPasswordTxtfield.delegate = self;
-        _oldPasswordTxtfield.backgroundColor = [UIColor whiteColor];
-        _oldPasswordTxtfield.font = [UIFont systemFontOfSize:15];
-        _oldPasswordTxtfield.returnKeyType = UIReturnKeyNext;
-        _oldPasswordTxtfield.clearButtonMode = UITextFieldViewModeWhileEditing;
         _oldPasswordTxtfield.keyboardType = UIKeyboardTypeASCIICapable;
         _oldPasswordTxtfield.placeholder = @"请输入原始密码";
-        _oldPasswordTxtfield.borderStyle = UITextBorderStyleNone;
         _oldPasswordTxtfield.secureTextEntry = YES;
-        _oldPasswordTxtfield.autocorrectionType = UITextAutocorrectionTypeNo;
         [_oldPasswordTxtfield addTarget:self action:@selector(oldPasswordEditingChanged:) forControlEvents:UIControlEventEditingChanged];
         
     }
@@ -210,16 +204,11 @@
 - (UITextField *)nowPasswordTxtfield {
     
     if (!_nowPasswordTxtfield) {
-        _nowPasswordTxtfield = [UITextField new];
+        _nowPasswordTxtfield = [UITextField setUpTextFieldForPubilc];
         _nowPasswordTxtfield.delegate = self;
-        _nowPasswordTxtfield.font = [UIFont systemFontOfSize:15];
-        _nowPasswordTxtfield.returnKeyType = UIReturnKeyDone;
-        _nowPasswordTxtfield.clearButtonMode = UITextFieldViewModeWhileEditing;
         _nowPasswordTxtfield.keyboardType = UIKeyboardTypeASCIICapable;
         _nowPasswordTxtfield.placeholder = @"由6~15位字符组成";
-        _nowPasswordTxtfield.borderStyle = UITextBorderStyleNone;
         _nowPasswordTxtfield.secureTextEntry = YES;
-        _nowPasswordTxtfield.autocorrectionType = UITextAutocorrectionTypeNo;
         [_nowPasswordTxtfield addTarget:self action:@selector(nowPasswordEditingChanged:) forControlEvents:UIControlEventEditingChanged];
     }
     return _nowPasswordTxtfield;
@@ -240,16 +229,12 @@
 - (UITextField *)affirmPasswordTxtfield {
     
     if (!_affirmPasswordTxtfield) {
-        _affirmPasswordTxtfield = [UITextField new];
+        _affirmPasswordTxtfield = [UITextField setUpTextFieldForPubilc];
         _affirmPasswordTxtfield.delegate = self;
-        _affirmPasswordTxtfield.font = [UIFont systemFontOfSize:15];
         _affirmPasswordTxtfield.returnKeyType = UIReturnKeyDone;
-        _affirmPasswordTxtfield.clearButtonMode = UITextFieldViewModeWhileEditing;
         _affirmPasswordTxtfield.keyboardType = UIKeyboardTypeASCIICapable;
         _affirmPasswordTxtfield.placeholder = @"请再次输入新密码";
-        _affirmPasswordTxtfield.borderStyle = UITextBorderStyleNone;
         _affirmPasswordTxtfield.secureTextEntry = YES;
-        _affirmPasswordTxtfield.autocorrectionType = UITextAutocorrectionTypeNo;
         [_affirmPasswordTxtfield addTarget:self action:@selector(affirmPasswordEditingChanged:) forControlEvents:UIControlEventEditingChanged];
     }
     return _affirmPasswordTxtfield;

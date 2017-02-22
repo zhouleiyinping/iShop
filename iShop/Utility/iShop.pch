@@ -65,5 +65,6 @@
 #import "StringUtility.h"
 #import "UIView+Frame.h"
 #import "UIView+Positioning.h"
+#import "UITextField+Extension.h"
 
 #endif /* iShop_pch */

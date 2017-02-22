@@ -4,7 +4,7 @@
 //
 //  Created by 周磊 on 2017/2/21.
 //  Copyright © 2017年 zhuohan. All rights reserved.
-//  立即更换包括手机号、密码、提现密码
+//  立即更换包括手机号、密码、提现密码<已绑定>
 
 #import "BaseViewController.h"
 #import "BindingPublicView.h"

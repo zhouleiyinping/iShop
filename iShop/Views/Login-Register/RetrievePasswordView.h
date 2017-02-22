@@ -42,10 +42,6 @@ typedef void (^submitActionBlock)(void);
  */
 @property (nonatomic, strong) UILabel *hintLab;
 
-/**
- *  在线客服
- */
-@property (nonatomic, strong) UIButton *OnlineServiceBtn;
 
 /**
  *  提示2

@@ -25,7 +25,8 @@
 
 // 校验身份证号码 是否合法
 + (BOOL)verifyIDCardNumber:(NSString *)value;
-
+// 校验是否是汉字
++ (BOOL)isChinese:(NSString *)str;
 // 去掉内容中的超链接
 + (NSString *)removeHyperLinkFromContent:(NSString *)content;
 
@@ -42,6 +43,8 @@
 
 // 检查字符串是否为全符号字符
 + (BOOL)isStringOfString:(NSString *)string;
+// 检查银行卡号是否合法
++ (BOOL) checkBankCodeYes:(NSString*) bankCode;
 
 // 计算字符串高度
 - (float)heightWithFont:(UIFont *)font andWidth:(float)width;

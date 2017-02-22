@@ -143,16 +143,10 @@
 -(UITextField *)userNameTxtfield {
     
     if (!_userNameTxtfield) {
-        _userNameTxtfield = [UITextField new];
+        _userNameTxtfield = [UITextField setUpTextFieldForPubilc];
         _userNameTxtfield.delegate = self;
-        _userNameTxtfield.backgroundColor = [UIColor whiteColor];
-        _userNameTxtfield.font = [UIFont systemFontOfSize:15];
-        _userNameTxtfield.returnKeyType = UIReturnKeyNext;
-        _userNameTxtfield.clearButtonMode = UITextFieldViewModeWhileEditing;
         _userNameTxtfield.keyboardType = UIKeyboardTypeDefault;
         _userNameTxtfield.placeholder = @"手机号/用户名";
-        _userNameTxtfield.borderStyle = UITextBorderStyleNone;
-        _userNameTxtfield.autocorrectionType = UITextAutocorrectionTypeNo;
         [_userNameTxtfield addTarget:self action:@selector(userNameEditingChanged:) forControlEvents:UIControlEventEditingChanged];
         
     }
@@ -162,16 +156,12 @@
 - (UITextField *)passwordTxtfield {
     
     if (!_passwordTxtfield) {
-        _passwordTxtfield = [UITextField new];
+        _passwordTxtfield = [UITextField setUpTextFieldForPubilc];
         _passwordTxtfield.delegate = self;
-        _passwordTxtfield.font = [UIFont systemFontOfSize:15];
         _passwordTxtfield.returnKeyType = UIReturnKeyDone;
-        _passwordTxtfield.clearButtonMode = UITextFieldViewModeWhileEditing;
         _passwordTxtfield.keyboardType = UIKeyboardTypeASCIICapable;
         _passwordTxtfield.placeholder = @"输入密码";
-        _passwordTxtfield.borderStyle = UITextBorderStyleNone;
         _passwordTxtfield.secureTextEntry = YES;
-        _passwordTxtfield.autocorrectionType = UITextAutocorrectionTypeNo;
         [_passwordTxtfield addTarget:self action:@selector(passwordEditingChanged:) forControlEvents:UIControlEventEditingChanged];
     }
     return _passwordTxtfield;

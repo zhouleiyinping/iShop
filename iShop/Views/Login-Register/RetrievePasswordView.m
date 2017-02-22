@@ -33,7 +33,6 @@
         [self.bgView addSubview:self.phoneLab];
         [self.bgView addSubview:self.codeLab];
         [self.bgView addSubview:self.getCodeBtn];
-        [self addSubview:self.OnlineServiceBtn];
         [self setupConstraints];
         
     }
@@ -93,7 +92,7 @@
 
     [self.hintLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(self.mas_leading).offset(20);
-//        make.trailing.mas_equalTo(self.mas_trailing).offset(-20);
+        make.trailing.mas_equalTo(self.mas_trailing).offset(-20);
         make.top.equalTo(self.loginBtn.mas_bottom).offset(30);
     }];
     
@@ -103,10 +102,6 @@
         make.top.equalTo(self.hintLab.mas_bottom).offset(10);
     }];
     
-    [self.OnlineServiceBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.hintLab.mas_centerY).offset(0);
-        make.left.equalTo(self.hintLab.mas_right).offset(0);
-    }];
     
     [self.getCodeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.codeTxtfield.mas_centerY).offset(0);
@@ -132,8 +127,6 @@
             [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithString:@"#eb203b"] range:NSMakeRange(0, 1)];
             [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithString:@"#666666"] range:NSMakeRange(1, attrString.length - 1)];
             _hintLab.attributedText = attrString;
-
-            self.OnlineServiceBtn.hidden = YES;
             
         }
             break;
@@ -155,16 +148,11 @@
 -(UITextField *)phoneTxtfield {
     
     if (!_phoneTxtfield) {
-        _phoneTxtfield = [UITextField new];
+        _phoneTxtfield = [UITextField setUpTextFieldForPubilc];
         _phoneTxtfield.delegate = self;
-        _phoneTxtfield.backgroundColor = [UIColor whiteColor];
-        _phoneTxtfield.font = [UIFont systemFontOfSize:15];
         _phoneTxtfield.returnKeyType = UIReturnKeyNext;
-        _phoneTxtfield.clearButtonMode = UITextFieldViewModeWhileEditing;
         _phoneTxtfield.keyboardType = UIKeyboardTypeNumberPad;
         _phoneTxtfield.placeholder = @"请输入绑定的手机号码";
-        _phoneTxtfield.borderStyle = UITextBorderStyleNone;
-        _phoneTxtfield.autocorrectionType = UITextAutocorrectionTypeNo;
         [_phoneTxtfield addTarget:self action:@selector(phoneNumberEditingChanged:) forControlEvents:UIControlEventEditingChanged];
         
     }
@@ -196,16 +184,11 @@
 -(UITextField *)codeTxtfield {
     
     if (!_codeTxtfield) {
-        _codeTxtfield = [UITextField new];
+        _codeTxtfield = [UITextField setUpTextFieldForPubilc];
         _codeTxtfield.delegate = self;
-        _codeTxtfield.backgroundColor = [UIColor whiteColor];
-        _codeTxtfield.font = [UIFont systemFontOfSize:15];
         _codeTxtfield.returnKeyType = UIReturnKeyNext;
-        _codeTxtfield.clearButtonMode = UITextFieldViewModeWhileEditing;
         _codeTxtfield.keyboardType = UIKeyboardTypeNumberPad;
         _codeTxtfield.placeholder = @"请输入收到的验证码";
-        _codeTxtfield.borderStyle = UITextBorderStyleNone;
-        _codeTxtfield.autocorrectionType = UITextAutocorrectionTypeNo;
         [_codeTxtfield addTarget:self action:@selector(codeTxtfieldChanged:) forControlEvents:UIControlEventEditingChanged];
         
     }
@@ -234,25 +217,6 @@
 }
 
 
-- (UIButton *)OnlineServiceBtn {
-    
-    if (!_OnlineServiceBtn) {
-        _OnlineServiceBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _OnlineServiceBtn.backgroundColor = [UIColor clearColor];
-        _OnlineServiceBtn.titleLabel.font = [UIFont systemFontOfSize:12];
-        [_OnlineServiceBtn setTitle:@"在线客服" forState:UIControlStateNormal];
-        [_OnlineServiceBtn setTitleColor:RGBColor(0, 110, 252) forState:UIControlStateNormal];
-        [_OnlineServiceBtn setTitleColor:RGBColor(0, 110, 252) forState:UIControlStateHighlighted];
-        [_OnlineServiceBtn addTarget:self action:@selector(onlineServiceAction) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _OnlineServiceBtn;
-}
--(void)onlineServiceAction {
-
-    if (self.serviceBlock) {
-        self.serviceBlock();
-    }
-}
 - (UIButton *)loginBtn {
     
     if (!_loginBtn) {
@@ -353,10 +317,14 @@
 - (UILabel *)hintLab {
     
     if (!_hintLab) {
-        NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:@"*如还未绑定手机号，请联系"];
+        NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:@"*如还未绑定手机号，请联系在线客服"];
         [attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:NSMakeRange(0, attrString.length)];
         [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithString:@"#eb203b"] range:NSMakeRange(0, 1)];
-        [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithString:@"#666666"] range:NSMakeRange(1, attrString.length - 1)];
+        [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithString:@"#eb203b"] range:NSMakeRange(attrString.length - 5, 5)];
+        
+        [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithString:@"#666666"] range:NSMakeRange(1, attrString.length - 5)];
+        
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onlineServiceAction)];
         
         _hintLab = [UILabel new];
         _hintLab.backgroundColor = [UIColor clearColor];
@@ -365,8 +333,16 @@
         _hintLab.attributedText = attrString;
         _hintLab.numberOfLines = 0;
         _hintLab.userInteractionEnabled = YES;
+        [_hintLab addGestureRecognizer:tapGesture];
+
     }
     return _hintLab;
+}
+-(void)onlineServiceAction {
+    
+    if (self.serviceBlock) {
+        self.serviceBlock();
+    }
 }
 - (UILabel *)hintLab2 {
     

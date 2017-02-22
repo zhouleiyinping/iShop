@@ -8,7 +8,7 @@
 
 #import "PromptlyChangeViewController.h"
 #import "AmendPasswordViewController.h"
-#import "PhoneBindingViewController.h"
+#import "ChangePhoneNumberViewController.h"
 
 @interface PromptlyChangeViewController ()
 
@@ -53,8 +53,8 @@
             switch (wself.safeVCType) {
                 case PhoneBinding:{//手机绑定
                     
-                    PhoneBindingViewController *phoneBindingVC = [[PhoneBindingViewController alloc]init];
-                    [wself.navigationController pushViewController:phoneBindingVC animated:YES];
+                    ChangePhoneNumberViewController *changePhoneNumberVC = [[ChangePhoneNumberViewController alloc]init];
+                    [wself.navigationController pushViewController:changePhoneNumberVC animated:YES];
                 }
                     break;
                     

@@ -44,11 +44,15 @@
 
 -(void)clickLoginButton:(UIButton *)button {
     
-    SecurityCenterViewController * VC = [[SecurityCenterViewController alloc]init];
-//    LoginViewController *VC = [[LoginViewController alloc]init];
+    LoginViewController *VC = [[LoginViewController alloc]init];
     [self.navigationController pushViewController:VC animated:YES];
     
     
 }
 
+-(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    SecurityCenterViewController * VC = [[SecurityCenterViewController alloc]init];
+    [self.navigationController pushViewController:VC animated:YES];
+}
 @end

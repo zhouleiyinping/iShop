@@ -7,6 +7,7 @@
 //
 
 #import "PhoneBindingViewController.h"
+#import "ChangePhoneNumberViewController.h"
 
 @interface PhoneBindingViewController ()
 

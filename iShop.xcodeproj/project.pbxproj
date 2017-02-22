@@ -28,6 +28,16 @@
 		71C683021E5C32A600788924 /* AmendPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C682FF1E5C32A600788924 /* AmendPasswordView.m */; };
 		71C683031E5C32A600788924 /* BindingPublicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C683011E5C32A600788924 /* BindingPublicView.m */; };
 		71C683061E5C363300788924 /* PhoneBindingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C683051E5C363300788924 /* PhoneBindingViewController.m */; };
+		71C683091E5D268400788924 /* IdentityBindingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C683081E5D268400788924 /* IdentityBindingView.m */; };
+		71C683121E5D37B000788924 /* IdentityBindingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C683111E5D37B000788924 /* IdentityBindingViewController.m */; };
+		71C683151E5D38EC00788924 /* IdentityIsBindingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C683141E5D38EC00788924 /* IdentityIsBindingView.m */; };
+		71C683181E5D635B00788924 /* ChangePhoneNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C683171E5D635B00788924 /* ChangePhoneNumberView.m */; };
+		71C6831B1E5D684000788924 /* ChangePhoneNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C6831A1E5D684000788924 /* ChangePhoneNumberViewController.m */; };
+		71C683211E5D744700788924 /* SetUpDrawMoneyPwViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C683201E5D744700788924 /* SetUpDrawMoneyPwViewController.m */; };
+		71C683241E5D7B7500788924 /* UITextField+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C683231E5D7B7500788924 /* UITextField+Extension.m */; };
+		71C6832A1E5D818000788924 /* BankCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C683291E5D818000788924 /* BankCodeViewController.m */; };
+		71C6832D1E5D839B00788924 /* AddBankCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C6832C1E5D839B00788924 /* AddBankCodeViewController.m */; };
+		71C683301E5D87D400788924 /* AddBankCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C6832F1E5D87D400788924 /* AddBankCodeView.m */; };
 		71E88C391E5705AE00F809B5 /* LCPanGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E88C341E5705AE00F809B5 /* LCPanGestureRecognizer.m */; };
 		71E88C3A1E5705AE00F809B5 /* LCPanNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E88C361E5705AE00F809B5 /* LCPanNavigationController.m */; };
 		71E88C3B1E5705AE00F809B5 /* UIView+Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E88C381E5705AE00F809B5 /* UIView+Snapshot.m */; };
@@ -129,6 +139,26 @@
 		71C683011E5C32A600788924 /* BindingPublicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindingPublicView.m; sourceTree = "<group>"; };
 		71C683041E5C363300788924 /* PhoneBindingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneBindingViewController.h; sourceTree = "<group>"; };
 		71C683051E5C363300788924 /* PhoneBindingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneBindingViewController.m; sourceTree = "<group>"; };
+		71C683071E5D268400788924 /* IdentityBindingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdentityBindingView.h; sourceTree = "<group>"; };
+		71C683081E5D268400788924 /* IdentityBindingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdentityBindingView.m; sourceTree = "<group>"; };
+		71C683101E5D37B000788924 /* IdentityBindingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdentityBindingViewController.h; sourceTree = "<group>"; };
+		71C683111E5D37B000788924 /* IdentityBindingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdentityBindingViewController.m; sourceTree = "<group>"; };
+		71C683131E5D38EC00788924 /* IdentityIsBindingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdentityIsBindingView.h; sourceTree = "<group>"; };
+		71C683141E5D38EC00788924 /* IdentityIsBindingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdentityIsBindingView.m; sourceTree = "<group>"; };
+		71C683161E5D635B00788924 /* ChangePhoneNumberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePhoneNumberView.h; sourceTree = "<group>"; };
+		71C683171E5D635B00788924 /* ChangePhoneNumberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePhoneNumberView.m; sourceTree = "<group>"; };
+		71C683191E5D684000788924 /* ChangePhoneNumberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePhoneNumberViewController.h; sourceTree = "<group>"; };
+		71C6831A1E5D684000788924 /* ChangePhoneNumberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePhoneNumberViewController.m; sourceTree = "<group>"; };
+		71C6831F1E5D744700788924 /* SetUpDrawMoneyPwViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetUpDrawMoneyPwViewController.h; sourceTree = "<group>"; };
+		71C683201E5D744700788924 /* SetUpDrawMoneyPwViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetUpDrawMoneyPwViewController.m; sourceTree = "<group>"; };
+		71C683221E5D7B7500788924 /* UITextField+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Extension.h"; sourceTree = "<group>"; };
+		71C683231E5D7B7500788924 /* UITextField+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Extension.m"; sourceTree = "<group>"; };
+		71C683281E5D818000788924 /* BankCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankCodeViewController.h; sourceTree = "<group>"; };
+		71C683291E5D818000788924 /* BankCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankCodeViewController.m; sourceTree = "<group>"; };
+		71C6832B1E5D839B00788924 /* AddBankCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBankCodeViewController.h; sourceTree = "<group>"; };
+		71C6832C1E5D839B00788924 /* AddBankCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBankCodeViewController.m; sourceTree = "<group>"; };
+		71C6832E1E5D87D400788924 /* AddBankCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBankCodeView.h; sourceTree = "<group>"; };
+		71C6832F1E5D87D400788924 /* AddBankCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBankCodeView.m; sourceTree = "<group>"; };
 		71E88C331E5705AE00F809B5 /* LCPanGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCPanGestureRecognizer.h; sourceTree = "<group>"; };
 		71E88C341E5705AE00F809B5 /* LCPanGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCPanGestureRecognizer.m; sourceTree = "<group>"; };
 		71E88C351E5705AE00F809B5 /* LCPanNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCPanNavigationController.h; sourceTree = "<group>"; };
@@ -352,6 +382,16 @@
 				71C682FC1E5C27E300788924 /* PromptlyChangeViewController.m */,
 				71C683041E5C363300788924 /* PhoneBindingViewController.h */,
 				71C683051E5C363300788924 /* PhoneBindingViewController.m */,
+				71C683101E5D37B000788924 /* IdentityBindingViewController.h */,
+				71C683111E5D37B000788924 /* IdentityBindingViewController.m */,
+				71C683191E5D684000788924 /* ChangePhoneNumberViewController.h */,
+				71C6831A1E5D684000788924 /* ChangePhoneNumberViewController.m */,
+				71C6831F1E5D744700788924 /* SetUpDrawMoneyPwViewController.h */,
+				71C683201E5D744700788924 /* SetUpDrawMoneyPwViewController.m */,
+				71C683281E5D818000788924 /* BankCodeViewController.h */,
+				71C683291E5D818000788924 /* BankCodeViewController.m */,
+				71C6832B1E5D839B00788924 /* AddBankCodeViewController.h */,
+				71C6832C1E5D839B00788924 /* AddBankCodeViewController.m */,
 			);
 			path = "SecurityCenter(安全中心)";
 			sourceTree = "<group>";
@@ -365,6 +405,14 @@
 				71C682FF1E5C32A600788924 /* AmendPasswordView.m */,
 				71C683001E5C32A600788924 /* BindingPublicView.h */,
 				71C683011E5C32A600788924 /* BindingPublicView.m */,
+				71C683071E5D268400788924 /* IdentityBindingView.h */,
+				71C683081E5D268400788924 /* IdentityBindingView.m */,
+				71C683131E5D38EC00788924 /* IdentityIsBindingView.h */,
+				71C683141E5D38EC00788924 /* IdentityIsBindingView.m */,
+				71C683161E5D635B00788924 /* ChangePhoneNumberView.h */,
+				71C683171E5D635B00788924 /* ChangePhoneNumberView.m */,
+				71C6832E1E5D87D400788924 /* AddBankCodeView.h */,
+				71C6832F1E5D87D400788924 /* AddBankCodeView.m */,
 			);
 			path = SecurityCenter;
 			sourceTree = "<group>";
@@ -567,6 +615,8 @@
 				71F84E9F1E596A2B00F47CA3 /* UIView+Frame.m */,
 				71F84EA01E596A2B00F47CA3 /* UIView+Positioning.h */,
 				71F84EA11E596A2B00F47CA3 /* UIView+Positioning.m */,
+				71C683221E5D7B7500788924 /* UITextField+Extension.h */,
+				71C683231E5D7B7500788924 /* UITextField+Extension.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -833,8 +883,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71C683181E5D635B00788924 /* ChangePhoneNumberView.m in Sources */,
 				71E88C391E5705AE00F809B5 /* LCPanGestureRecognizer.m in Sources */,
 				71F84EBE1E596A2B00F47CA3 /* UIDevice+Extension.m in Sources */,
+				71C683151E5D38EC00788924 /* IdentityIsBindingView.m in Sources */,
 				71F84EDC1E596A5B00F47CA3 /* NSDictionary+safe.m in Sources */,
 				71F84EB61E596A2B00F47CA3 /* AFHTTPUtility.m in Sources */,
 				71F84EBD1E596A2B00F47CA3 /* UIColor+Extension.m in Sources */,
@@ -843,6 +895,8 @@
 				71C682E91E5BD97900788924 /* SecurityCenterTabCell.m in Sources */,
 				71F84EE01E596A5B00F47CA3 /* NSNumber+safe.m in Sources */,
 				71F84EC11E596A2B00F47CA3 /* UIView+Positioning.m in Sources */,
+				71C6831B1E5D684000788924 /* ChangePhoneNumberViewController.m in Sources */,
+				71C683241E5D7B7500788924 /* UITextField+Extension.m in Sources */,
 				714215871E5ADE6100106A65 /* registerView.m in Sources */,
 				71F84EE21E596A5B00F47CA3 /* RTSwizzle.m in Sources */,
 				71C682ED1E5BE89000788924 /* SecurityCenterModel.m in Sources */,
@@ -854,6 +908,7 @@
 				71F84EDD1E596A5B00F47CA3 /* NSMutableArray+safe.m in Sources */,
 				71F84EF91E5971B800F47CA3 /* ActivityViewController.m in Sources */,
 				71C682F01E5BEB4100788924 /* AmendPasswordViewController.m in Sources */,
+				71C683121E5D37B000788924 /* IdentityBindingViewController.m in Sources */,
 				714215841E5ACB5E00106A65 /* loginView.m in Sources */,
 				71F84EDE1E596A5B00F47CA3 /* NSMutableDictionary+safe.m in Sources */,
 				71F84EC01E596A2B00F47CA3 /* UIView+Frame.m in Sources */,
@@ -861,6 +916,7 @@
 				714215761E599F5E00106A65 /* AppDelegate.m in Sources */,
 				71C682FD1E5C27E300788924 /* PromptlyChangeViewController.m in Sources */,
 				7142158D1E5AF02000106A65 /* RetrievePasswordViewController.m in Sources */,
+				71C6832A1E5D818000788924 /* BankCodeViewController.m in Sources */,
 				71E88C4A1E5705CF00F809B5 /* YWSpritesLoadingView.m in Sources */,
 				7142158A1E5AE0E000106A65 /* RegisterViewController.m in Sources */,
 				714215901E5AF06200106A65 /* RetrievePasswordView.m in Sources */,
@@ -876,14 +932,18 @@
 				71F84EDB1E596A5B00F47CA3 /* NSArray+safe.m in Sources */,
 				71E88C9D1E57081800F809B5 /* AppIntroViewController.m in Sources */,
 				71C683031E5C32A600788924 /* BindingPublicView.m in Sources */,
+				71C6832D1E5D839B00788924 /* AddBankCodeViewController.m in Sources */,
 				71E88C9E1E57081800F809B5 /* AppIntroView.m in Sources */,
+				71C683091E5D268400788924 /* IdentityBindingView.m in Sources */,
 				71F84EB51E596A2B00F47CA3 /* AFHTTPClient.m in Sources */,
 				71F84EE11E596A5B00F47CA3 /* NSString+safe.m in Sources */,
 				7142157D1E5AC38A00106A65 /* LoginViewController.m in Sources */,
 				71C683021E5C32A600788924 /* AmendPasswordView.m in Sources */,
+				71C683211E5D744700788924 /* SetUpDrawMoneyPwViewController.m in Sources */,
 				71F84EEC1E596F2E00F47CA3 /* SheetManager.m in Sources */,
 				71F84EE51E596A8A00F47CA3 /* ZAppManager.m in Sources */,
 				71E88C3B1E5705AE00F809B5 /* UIView+Snapshot.m in Sources */,
+				71C683301E5D87D400788924 /* AddBankCodeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
